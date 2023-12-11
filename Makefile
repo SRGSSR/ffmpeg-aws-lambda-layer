@@ -1,5 +1,3 @@
-STACK_NAME ?= stipo-test-ffmpeg-lambda-layer
-
 clean: 
 	rm -rf build
 
