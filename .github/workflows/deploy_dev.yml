@@ -5,9 +5,9 @@ on:
     branches:
       - main
 
-variables:
-  bucket: play-suisse-dev-lambda-layers
-  stack_name: play-suisse-dev-ffmpeg-lambda-layers
+env:
+  BUCKET: play-suisse-dev-lambda-layers
+  STACK_NAME: play-suisse-dev-ffmpeg-lambda-layers
 
 jobs:
   build:
@@ -39,5 +39,5 @@ jobs:
       - name: Build and Deploy
         run: |
           make clean
-          aws s3api get-bucket-location --bucket ${{ vars.bucket }} || aws s3 mb s3://${{ vars.bucket }}
-          make deploy DEPLOYMENT_BUCKET=${{ vars.bucket }} STACK_NAME=${{ vars.stack_name }}
+          aws s3api get-bucket-location --bucket $BUCKET || aws s3 mb s3://$BUCKET
+          make deploy DEPLOYMENT_BUCKET=$BUCKET STACK_NAME=$STACK_NAME
